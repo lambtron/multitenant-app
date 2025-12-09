@@ -78,16 +78,11 @@ app.get("/", (c) => {
 
           <div class="instructions">
             <h3>Try it out:</h3>
-            <p>Add to your <code>/etc/hosts</code> file:</p>
-            <pre>127.0.0.1 andy.localhost
-127.0.0.1 sarah.localhost
-127.0.0.1 tenant1.localhost</pre>
-
-            <p>Then visit:</p>
+            <p>Visit a subdomain:</p>
             <ul>
-              <li><a href="http://andy.localhost:8000">http://andy.localhost:8000</a></li>
-              <li><a href="http://sarah.localhost:8000">http://sarah.localhost:8000</a></li>
-              <li><a href="http://tenant1.localhost:8000">http://tenant1.localhost:8000</a></li>
+              <li><a href="https://moonbeam.roobarb.club">moonbeam.roobarb.club</a></li>
+              <li><a href="https://velvet.roobarb.club">velvet.roobarb.club</a></li>
+              <li><a href="https://cosmic.roobarb.club">cosmic.roobarb.club</a></li>
             </ul>
           </div>
         </body>

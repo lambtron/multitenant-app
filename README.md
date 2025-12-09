@@ -30,23 +30,13 @@ Or directly:
 deno run --allow-net --allow-env main.ts
 ```
 
-### 3. Configure local subdomains
-
-Edit `/etc/hosts` (Linux/Mac) or `C:\Windows\System32\drivers\etc\hosts` (Windows):
-
-```
-127.0.0.1 andy.localhost
-127.0.0.1 sarah.localhost
-127.0.0.1 tenant1.localhost
-```
-
-### 4. Test it out
+### 3. Test it out
 
 Visit in your browser:
-- http://localhost:8000 - Default homepage
-- http://andy.localhost:8000 - Andy's page (shows "hey andy")
-- http://sarah.localhost:8000 - Sarah's page (shows "hey sarah")
-- http://tenant1.localhost:8000/api/tenant - API endpoint
+- https://roobarb.club - Default homepage
+- https://moonbeam.roobarb.club - Moonbeam's page (shows "hey moonbeam")
+- https://velvet.roobarb.club - Velvet's page (shows "hey velvet")
+- https://cosmic.roobarb.club/api/tenant - API endpoint
 
 ## How It Works
 
