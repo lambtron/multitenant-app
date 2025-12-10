@@ -44,6 +44,17 @@ app.get("/", (c) => {
 
   // If no subdomain or it's just "localhost", show default page
   if (!subdomain || subdomain === "localhost" || subdomain === "example") {
+    // Detect current domain
+    const host = c.req.header("host") || "";
+    const hostWithoutPort = host.split(":")[0];
+    const baseDomains = ["roobarb.club", "localhost"];
+    const currentBase = baseDomains.find(base => hostWithoutPort === base || hostWithoutPort.endsWith("." + base)) || "localhost";
+    const protocol = currentBase === "localhost" ? "http" : "https";
+    const port = host.includes(":") ? `:${host.split(":")[1]}` : "";
+
+    // Example subdomains
+    const exampleSubdomains = ["moonbeam", "velvet", "cosmic"];
+
     return c.html(`
       <!DOCTYPE html>
       <html>
@@ -80,9 +91,9 @@ app.get("/", (c) => {
             <h3>Try it out:</h3>
             <p>Visit a subdomain:</p>
             <ul>
-              <li><a href="https://moonbeam.roobarb.club">moonbeam.roobarb.club</a></li>
-              <li><a href="https://velvet.roobarb.club">velvet.roobarb.club</a></li>
-              <li><a href="https://cosmic.roobarb.club">cosmic.roobarb.club</a></li>
+              ${exampleSubdomains.map(sub =>
+                `<li><a href="${protocol}://${sub}.${currentBase}${port}">${sub}.${currentBase}</a></li>`
+              ).join("\n              ")}
             </ul>
           </div>
         </body>
@@ -91,6 +102,15 @@ app.get("/", (c) => {
   }
 
   // Tenant-specific page
+  // Detect current domain for back link
+  const host = c.req.header("host") || "";
+  const hostWithoutPort = host.split(":")[0];
+  const baseDomains = ["roobarb.club", "localhost"];
+  const currentBase = baseDomains.find(base => hostWithoutPort === base || hostWithoutPort.endsWith("." + base)) || "localhost";
+  const protocol = currentBase === "localhost" ? "http" : "https";
+  const port = host.includes(":") ? `:${host.split(":")[1]}` : "";
+  const homeUrl = `${protocol}://${currentBase}${port}`;
+
   return c.html(`
     <!DOCTYPE html>
     <html>
@@ -130,7 +150,7 @@ app.get("/", (c) => {
           <h1>👋 hey <span class="subdomain">${subdomain}</span></h1>
           <p>This is your personal tenant page!</p>
           <p style="font-size: 0.9rem; margin-top: 30px;">
-            <a href="https://roobarb.club">← Back to home</a>
+            <a href="${homeUrl}">← Back to home</a>
           </p>
         </div>
       </body>
