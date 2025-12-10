@@ -106,14 +106,14 @@ app.get("/", (c) => {
           }
           h1 {
             font-size: 3rem;
-            color: #0066cc;
+            color: #f0f0f0;
           }
           .subdomain {
-            color: #ff6b6b;
+            color: #a8e6cf;
             font-weight: bold;
           }
           .card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: white;
             padding: 40px;
             border-radius: 16px;
